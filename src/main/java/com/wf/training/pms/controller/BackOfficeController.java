@@ -65,7 +65,7 @@ public class BackOfficeController {
 		return "index";
 	}
 	
-	@RequestMapping("/returnAddCompany")
+	@RequestMapping("/AddCompany")
 	public String returnAddCompany(@ModelAttribute("createCompany") CompanyDto createCompany) {
 		
 		return "CreateCompany";
@@ -81,7 +81,7 @@ public class BackOfficeController {
 		
 		model.addAttribute("CompanyOutput", addCompanyOutputDto);
 		
-		return "SavedCompany";
+		return "SaveCompanyDetails";
 	}
 	
 	
@@ -97,7 +97,7 @@ public class BackOfficeController {
 		model .addAttribute("CompanyOutput", companyOutputDto);
 		
 		
-		return "SavedCompany";
+		return "SaveCompanyDetails";
 	}
 	
 	
@@ -146,7 +146,7 @@ public class BackOfficeController {
 
 		List<String> companyNames=this.companyService.fetchAllCompanyNames();
 		model.addAttribute("companyNames",companyNames);
-		return "BoAddCompanyStockPrice";
+		return "AddCompanyStockPrice";
 	}
 	
 	
@@ -156,14 +156,14 @@ public class BackOfficeController {
 		model.addAttribute("companyNames",companyNames);
 		if (result.hasErrors()) {
 			
-			return "BoAddCompanyStockPrice";
+			return "AddCompanyStockPrice";
 		}
 		if(this.companyService.addStockPrice(addStockDto))
 		{
 			model.addAttribute("Message", "Stock added successfully");
-			return "BoAddCompanyStockPrice";
+			return "AddCompanyStockPrice";
 		}
-		return "BoAddCompanyStockPrice";
+		return "AddCompanyStockPrice";
 	}
 	@RequestMapping("/selectModifyCompany")
 	public String selectModifyCompany(@ModelAttribute("selectCompany") SearchCompanyDto searchCompanyDto) {

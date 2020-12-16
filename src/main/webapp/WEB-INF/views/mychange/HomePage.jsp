@@ -19,6 +19,7 @@ body {
 
 <jsp:include page="header.jsp" />
 <body>
+
 	<div class="container">
 		<div class="card">
 			<div class="card-body d-flex flex-column justify-content-center">

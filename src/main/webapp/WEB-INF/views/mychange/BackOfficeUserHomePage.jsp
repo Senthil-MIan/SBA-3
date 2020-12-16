@@ -20,37 +20,42 @@ body {
 
 <body>
 	<jsp:include page="header.jsp" />
-		
-		
-	
+
+
+
 	<div id="main">
-		
-		
-			<div align="right">	
-		<p><a href="${pageContext.request.contextPath}/logout">Logout</a></p>
+
+
+		<div align="right">
+			<p>
+				<a href="${pageContext.request.contextPath}/logout">Logout</a>
+			</p>
 		</div>
-		
+
 		<div class="container" align="center">
 			<h4>Back Office User Dashboard</h4>
 		</div>
 		<div align="center">
-		<a href="${pageContext.request.contextPath}/bouser/returnAddCompany">Add Company</a><br>
-		<a href="${pageContext.request.contextPath}/bouser/selectModifyCompany">Modify Company</a><br>
-		<a href="${pageContext.request.contextPath}/bouser/addCompanyStockPrice">Add Company Stock Price</a><br>
-		<a href="${pageContext.request.contextPath}/bouser/returnCreateCommodity">Create Commodity</a><br>
-		<a href="${pageContext.request.contextPath}/bouser/selectModifyCommodity">Modify Commodity</a><br>
-		<a href="${pageContext.request.contextPath}/bouser/addCommodityPrice">Add Commodity Price</a><br><br><br>
-		
-		<label> <b>Generate Commission</b>
-		</label><br>
-		
-			<a href="#">Annual Report</a><br>
-			<a href="#">Monthly Report</a><br>
-		    <a href="#">Periodic Report</a><br>
-		    
-		    </div>
-	 </div>
-	
-<jsp:include page="footer.jsp" />
+			<a href="${pageContext.request.contextPath}/bouser/AddCompany">Add
+				Company</a><br> <a
+				href="${pageContext.request.contextPath}/bouser/selectModifyCompany">Modify
+				Company</a><br> <a
+				href="${pageContext.request.contextPath}/bouser/addCompanyStockPrice">Add
+				Company Stock Price</a><br> <a
+				href="${pageContext.request.contextPath}/bouser/returnCreateCommodity">Create
+				Commodity</a><br> <a
+				href="${pageContext.request.contextPath}/bouser/selectModifyCommodity">Modify
+				Commodity</a><br> <a
+				href="${pageContext.request.contextPath}/bouser/addCommodityPrice">Add
+				Commodity Price</a><br>
+			<br>
+			<br> <label> <b>Generate Commission</b>
+			</label><br> <a href="#">Annual Report</a><br> <a href="#">Monthly
+				Report</a><br> <a href="#">Periodic Report</a><br>
+
+		</div>
+	</div>
+
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

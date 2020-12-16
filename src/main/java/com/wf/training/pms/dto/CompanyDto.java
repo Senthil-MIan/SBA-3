@@ -14,7 +14,7 @@ public class CompanyDto {
 	@NotBlank
 	private String operation;
 	
-	@Min(value = 1000)
+	@Min(value = 100)
 	private int shareCount;
 	
 	@DecimalMin("0.1") 
