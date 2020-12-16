@@ -23,7 +23,7 @@ body {
 	
 	
 <jsp:include page="header.jsp" />
-	<div id="main">
+	
 		<div>
 			<a href="${pageContext.request.contextPath}/bouser/home"
 				id="primaryNavigators">Back Office Dashboard</a>

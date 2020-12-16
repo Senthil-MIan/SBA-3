@@ -17,6 +17,7 @@ import javax.validation.Valid;
 
 import com.wf.training.pms.dto.StockPriceDto;
 import com.wf.training.pms.dto.CommodityDto;
+import com.wf.training.pms.dto.CommodityPriceDto;
 import com.wf.training.pms.dto.CompanyDto;
 import com.wf.training.pms.dto.SearchCommodityDto;
 import com.wf.training.pms.dto.SearchCompanyDto;
@@ -124,9 +125,7 @@ public class BackOfficeController {
 	
 	@RequestMapping("/modifyCommodity")
 	public String modifyCommodity(@Valid @ModelAttribute("commodityNewOutputDto") CommodityDto commodityNewOutputDto, BindingResult result, Model model) {
-		System.out.println("modifyCommodity");
-		System.out.println(commodityNewOutputDto);
-		System.out.println("modifyCommodity");
+		
 		
 		if (result.hasErrors()) {
 			return "ModifyCommodity";
@@ -134,9 +133,7 @@ public class BackOfficeController {
 		
 		CommodityDto commodityOutputDto =this.commodityService.modifyCommodity(commodityNewOutputDto);
 		model .addAttribute("CommodityOutput", commodityOutputDto);
-		System.out.println("modifyCommodity1");
-		System.out.println(commodityOutputDto);
-		System.out.println("modifyCommodity1");
+		
 		
 		return "SavedCommodity";
 	}
@@ -183,8 +180,23 @@ public class BackOfficeController {
 		return "ModifyCompany";
 	}
 	
-	@RequestMapping("/addCommodityPrice")
-	public String addCommodityPrice(@ModelAttribute("selectCompany") SearchCompanyDto searchCompanyDto) {
-		return "SelectModifyCompany";
-	}
+	/*
+	 * @RequestMapping("/addCommodityPrice") public String
+	 * addCommodityPrice(@ModelAttribute("addcommodityprice") CommodityPriceDto
+	 * addCommodityDto,Model model) { List<String>
+	 * commodityNames=this.commodityService.fetchSingleCommodityByName(commodityName
+	 * ); model.addAttribute("commodityNames", commodityNames); return
+	 * "AddCommodityPrice"; }
+	 */
+//	@RequestMapping("/addCompanyStockPrice")
+//	public String addCompanyStockPrice(@ModelAttribute("addstockprice") StockPriceDto addStockDto,Model model) {
+//
+//		List<String> companyNames=this.companyService.fetchAllCompanyNames();
+//		model.addAttribute("companyNames",companyNames);
+//		return "AddCompanyStockPrice";
+//	}
+//	
+	
+	
+	
 }
