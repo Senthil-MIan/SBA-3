@@ -17,13 +17,7 @@ public class AdminController {
 	@Autowired
 	private AdminUserService adminUserService;
 
-	@RequestMapping("/bocreate")
-	public String boCreate(Model model) {
-		
-		BackofficeInputDto backofficeuser = new BackofficeInputDto();
-		model.addAttribute("backofficeuser", backofficeuser);
-		return "backOfficeUserCreation";
-	}
+	
 
 	@PostMapping("/confirm")
 	public String boCreateConfirm(@Valid @ModelAttribute("backofficeuser") BackofficeInputDto user,BindingResult result) {
@@ -38,6 +32,13 @@ public class AdminController {
 			else
 				return "error";
 		}
+	}
+	@RequestMapping("/bocreate")
+	public String boCreate(Model model) {
+		
+		BackofficeInputDto backofficeuser = new BackofficeInputDto();
+		model.addAttribute("backofficeuser", backofficeuser);
+		return "backOfficeUserCreation";
 	}
 
 }

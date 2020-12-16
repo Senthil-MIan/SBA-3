@@ -1,27 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib uri= "http://www.springframework.org/tags/form" prefix="spring"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core" %> 
+	pageEncoding="ISO-8859-1"%>
+
+<%--Add reference to tag library --%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-
-<title>Super User Login Page</title>
+<style>
+body {
+	background-image: url("paper.gif");
+	background-color: #cccccc;
+}
+</style>
+<title>Admin Login Page</title>
 </head>
 <body>
-	<div>
+<jsp:include page="header.jsp" />
+	<div align="center">
 		<nav class="navbar navbar-dark bg-primary">
-			<div><a href="${pageContext.request.contextPath}/index" id="primaryNavigators">Index</a></div>
-			<span class="text-light font-weight-bold" >Super User Login Page</span>
+			<div><a href="${pageContext.request.contextPath}/index" id="primaryNavigators">Home Page</a></div>
+			<span class="text-light font-weight-bold" ><b>Admin Login</b></span>
 		</nav>
 	</div>
 	<br/>
-	<div id=login>
+	<div id=login align="center">
 	<h4 id =error>${Message}</h4>
 	<spring:form action="${pageContext.request.contextPath}/validate" method="POST" modelAttribute="superuser"> 
 		<div>
@@ -41,5 +44,6 @@
 		</div>
 	</spring:form>
 	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

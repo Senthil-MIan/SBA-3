@@ -5,6 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+	background-image: url("paper.gif");
+	background-color: #cccccc;
+}
+</style>
 <title>PMS Confirmation Page</title>
 </head>
 <body>
@@ -14,34 +20,22 @@
 
 <h2>Investor Registered Successfully.....</h2>
 <hr/>
-<%-- SpEL --%>
-<%-- getter method --%>
-<%-- <h3>User ID : ${investor.userid}</h3>
-<h3>First Name : ${investor.firstname}</h3>
-<h3>Last Name : ${investor.lastname}</h3>
-<h3>PAN Number : ${investor.pannumber}</h3>
-<h3>DOB : ${investor.dob}</h3>
-<h3>Mobile : ${investor.mobile}</h3>
-<h3>Email : ${investor.email}</h3>
-<h3>Amount Invested : ${investor.amountinvested}</h3> --%>
+
 <div>
 		<nav class="navbar navbar-dark bg-primary">
 			<div><a href="${pageContext.request.contextPath}" id="primaryNavigators">Home</a></div>
-			<span>
-				<!-- <span class="text-light font-weight-bold" >Investor Created Successfully</span> -->
-			</span>
 		</nav>
 	</div>
 	<hr/>
 	<div id = output>
-		<h2>Saved Details...</h2>
+		<h2>Investor Details:</h2>
 		<hr/>
 		<h5>Investor Id: ${newInvestorOut.investorId}</h5>
 		<h5>First Name: ${newInvestorOut.firstName}</h5>
 		<h5>Last Name: ${newInvestorOut.lastName}</h5>
+		<h5>Gender: ${newInvestorOut.gender}</h5>
 		<h5>Mobile Number: ${newInvestorOut.mobileNumber}</h5>
 		<h5>Pan Id: ${newInvestorOut.panId}</h5>
-		<h5>Gender: ${newInvestorOut.gender}</h5>
 		<h5>Email Id: ${newInvestorOut.emailId}</h5>
 		<h5>Login Key: ${newInvestorOut.loginKey}</h5>
 	</div>

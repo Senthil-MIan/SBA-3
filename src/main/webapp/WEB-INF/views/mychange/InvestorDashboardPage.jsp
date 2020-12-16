@@ -15,44 +15,34 @@
 	crossorigin="anonymous">
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+	background-image: url("paper.gif");
+	background-color: #cccccc;
+}
+</style>
 <title>Investor Dashboard Page</title>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
-		<header class="bmd-layout-header">
-		<div class="navbar navbar-light bg-faded">
-			<button class="navbar-toggler" type="button" data-toggle="drawer"
-				data-target="#dw-s2">
-				<span class="sr-only">Toggle drawer</span> <i class="material-icons">menu</i>
-			</button>
-			<ul class="nav navbar-nav">
-				<li class="nav-item">Title</li>
-			</ul>
+	
+	<div align="right">	
+		<p><a href="${pageContext.request.contextPath}/logout">Logout</a></p>
 		</div>
-		</header>
-		<div id="dw-s2" class="bmd-layout-drawer bg-faded">
-			<header> <a class="navbar-brand">Title</a> </header>
-			<ul class="list-group">
-				<a class="list-group-item" href="CurrentPortfoliovalues.jsp"> <b>
-						Current Portfolio values </b></a>
-				<a class="list-group-item" href="RecentlyViewedCompanies.jsp"> <b>
-						Recently Viewed Companies </b></a>
-				<a class="list-group-item" href="AmountInvestedasonDate.jsp"> <b>
-						Invested as on Date </b></a>
-			</ul>
-		</div>
+	<div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay"
+		align="left">
+		
 		<main class="bmd-layout-content">
 		<div class="container">
 			<div class="card">
 				<div class="card-body d-flex flex-column align-items-center"">
+					<div align="left">
+					<H3>Investor Dashboard</H3>
 
-					<H3>Welcome to Investor Dashboard Page</H3>
-
-					<a href="CurrentPortfoliovalues.jsp"> <b> Current Portfolio
-							values </b>
-					</a> <br> <a href="RecentlyViewedCompanies.jsp"> <b>
-							Recently Viewed Companies </b>
+					<a href="RecentlyViewedCompanies.jsp"> <b> Recently Viewed
+							Companies </b>
+					</a> <br> <a href="CurrentPortfoliovalues.jsp"> <b>
+							Current Portfolio values </b>
 					</a> <br> <a href="AmountInvestedasonDate.jsp"> <b> Amount
 							Invested as on Date </b>
 					</a> <br> <a href="AmountEarnedasonDate.jsp"> <b> Amount
@@ -73,10 +63,10 @@
 							Amount </b>
 					</a> <br> <a href="GeneratePortfolioReport.jsp"> <b>
 							Generate Portfolio Report </b>
-					</a> <br> <a href="Annually.jsp"> Annually </a> <br> <a
+					</a> <br> <b><a href="Annually.jsp"> Annually </a> <br> <a
 						href="Monthly.jsp"> Monthly </a> <br> <a
-						href="WithinPeriod.jsp"> Within given period </a> <br>
-
+						href="WithinPeriod.jsp"> Within given period </a> </b><br>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -97,6 +87,8 @@
 			$('body').bootstrapMaterialDesign();
 		});
 	</script>
+	
+	<jsp:include page="footer.jsp" />
 </body>
 
 </html>

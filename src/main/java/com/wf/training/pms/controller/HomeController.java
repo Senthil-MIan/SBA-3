@@ -48,13 +48,13 @@ public class HomeController {
 			Model model) {
 		System.out.println("Logging in");
 		if (result.hasErrors()) {
-			return "SuperUserLogin";
+			return "AdminLogin";
 		} else if (adminService.validateUser(dto)) {
 			System.out.println("superuser");
-			return "SuperUserHomePage";
+			return "AdminHomePage";
 		} else
 			model.addAttribute("Message", "Invalid Credentials");
-		return "SuperUserLogin";
+		return "AdminLogin";
 	}
 
 	@RequestMapping("/createInvestor")
@@ -75,7 +75,7 @@ public class HomeController {
 		return "InvestorConfirmationPage";
 	}
 
-	@RequestMapping("/invValidate")
+	@RequestMapping("/LoginValidate")
 	public String invValidate(@Valid @ModelAttribute("investorLoginDto") LoginDto investorLoginDto,
 			BindingResult result, Model model, HttpServletRequest request, HttpSession session) {
 		if (result.hasErrors()) {
@@ -95,14 +95,14 @@ public class HomeController {
 		}
 	}
 
-	@RequestMapping("/BOUserLogin")
+	@RequestMapping("/BackOfficeUserLogin")
 	public String backOfficeUserLogin(Model model) {
 		BackOfficeLoginDto backofficeuser = new BackOfficeLoginDto();
 		model.addAttribute("backofficeuser", backofficeuser);
 		return "BackOfficeUserLogin";
 	}
 
-	@PostMapping("/bovalidate")
+	@PostMapping("/BackOfficeLoginvalidate")
 	public String boLoginValidate(@Valid @ModelAttribute("backofficeuser") BackOfficeLoginDto user,
 			BindingResult result, Model model) {
 		if (result.hasErrors()) {
@@ -130,11 +130,11 @@ public class HomeController {
 		return "LoginPage";
 	}
 
-	@RequestMapping("/SuperUserLogin")
+	@RequestMapping("/AdminLogin")
 	public String superUserLogin(Model model) {
 		AdminLoginDto superuser = new AdminLoginDto();
 		model.addAttribute("superuser", superuser);
-		return "SuperUserLogin";
+		return "AdminLogin";
 	}
 
 }

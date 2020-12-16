@@ -7,50 +7,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+	background-image: url("paper.gif");
+	background-color: #cccccc;
+}
+</style>
 <title>Investor Login</title>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
 	<hr />
+	<div align="center">
 	<h2>Investor Login</h2>
+	</div>
 	<hr />
-	<%--
-	Map the model object with spring form
-	field level mapping : path 
-	When a form loads
-		call the getter method of class fields
-	When form is submitted:
-		call the setter methods	
- --%>
-
-	<%-- <spring:form action="login" method="post" modelAttribute="loginpage">
-		<div>
-			<div>
-				<spring:label path="userid">User ID</spring:label>
-			</div>
-			<div>
-				<spring:input path="userid" type="text" />
-				<spring:errors path="userid" cssClass="error" />
-			</div>
-		</div>
-		<br />
-
-		<div>
-			<div>
-				<spring:label path="password">Password</spring:label>
-			</div>
-			<div>
-				<spring:input path="password" type="password" />
-				<spring:errors path="password" cssClass="error" />
-			</div>
-		</div>
-		<br />
-
-		<input type="submit" value="Login" />
-	</spring:form> --%>
+	
 	<div id=login>
-		<spring:form action="${pageContext.request.contextPath}/invValidate"
+		<spring:form action="${pageContext.request.contextPath}/LoginValidate"
 			method="post" modelAttribute="investorLoginDto">
+			<div align="center">
 			<table>
 				<tr>
 					<td><spring:label path="loginKey">Username</spring:label></td>
@@ -75,7 +51,7 @@
 				<tr>
 					<td></td>
 					<td><input type=Submit name=Submit Value=Submit></td>
-					<td><input type=reset name=reset Value=reset></td>
+				
 				</tr>
 				<tr>
 					<td></td>
@@ -87,6 +63,7 @@
 					<td></td>
 				</tr>
 			</table>
+			</div>
 		</spring:form>
 	</div>
 	<hr />

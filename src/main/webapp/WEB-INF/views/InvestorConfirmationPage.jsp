@@ -5,17 +5,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>PMS Confirmation Page</title>
+<title>PMS Register Confirmation Page</title>
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 <hr/>
 
-<h2>Investor Registered Successfully.....</h2>
+<h2 align ="center">Investor Registered Successfully.....</h2>
 <hr/>
-<%-- SpEL --%>
-<%-- getter method --%>
+
 <h3>User ID : ${investor.userid}</h3>
 <h3>First Name : ${investor.firstname}</h3>
 <h3>Last Name : ${investor.lastname}</h3>
