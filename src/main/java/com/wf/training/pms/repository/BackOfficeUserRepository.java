@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.wf.training.pms.entity.BackOfficeUser;
 
 @Repository
-public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUser, Integer>{
+public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUser, String>{
 
-	BackOfficeUser findByLoginId(int id);
+	BackOfficeUser findByLoginId(String id);
 }

@@ -9,7 +9,7 @@ public class BackOfficeLoginDto {
 	private String password;
 	
 	@NotNull(message="User ID is Mandatory")
-	private Integer loginId;
+	private String loginId;
 
 	public String getPassword() {
 		return password;
@@ -19,11 +19,11 @@ public class BackOfficeLoginDto {
 		this.password = password;
 	}
 
-	public Integer getLoginId() {
+	public String getLoginId() {
 		return loginId;
 	}
 
-	public void setLoginId(Integer loginId) {
+	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
 

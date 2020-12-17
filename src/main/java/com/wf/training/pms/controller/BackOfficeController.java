@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
 
 import com.wf.training.pms.dto.StockPriceDto;
+import com.wf.training.pms.dto.BackOfficeLoginDto;
 import com.wf.training.pms.dto.CommodityDto;
 import com.wf.training.pms.dto.CommodityPriceDto;
 import com.wf.training.pms.dto.CompanyDto;
@@ -67,8 +69,9 @@ public class BackOfficeController {
 	}
 	
 	@RequestMapping("/AddCompany")
-	public String returnAddCompany(@ModelAttribute("createCompany") CompanyDto createCompany) {
-		
+	public String returnAddCompany(@ModelAttribute("createCompany") CompanyDto createCompany,HttpSession session) {
+		BackOfficeLoginDto user = (BackOfficeLoginDto)session.getAttribute("BO");
+		System.out.print(user.getLoginId());
 		return "CreateCompany";
 	}
 	
@@ -112,10 +115,12 @@ public class BackOfficeController {
 	}
 	
 	@PostMapping("/createCommodity")
-	public String addCommodity(@Valid @ModelAttribute("commodity") CommodityDto dto,BindingResult result,Model model) {
+	public String addCommodity(@Valid @ModelAttribute("commodity") CommodityDto dto,BindingResult result,Model model,HttpSession session) {
 		if (result.hasErrors()) {
 			return "CreateCommodity";
 		}
+		BackOfficeLoginDto user = (BackOfficeLoginDto)session.getAttribute("BO");
+		dto.setBoUserId(user.getLoginId());
 		CommodityDto output=this.commodityService.addCommodity(dto);
 		model.addAttribute("CommodityOutput", output);
 		return "SavedCommodity";
@@ -138,29 +143,29 @@ public class BackOfficeController {
 		return "SavedCommodity";
 	}
 	
-	@RequestMapping("/addCompanyStockPrice")
-	public String addCompanyStockPrice(@ModelAttribute("addstockprice") StockPriceDto addStockDto,Model model) {
+	@RequestMapping("/addCommodityPrice")
+	public String addCommodityPrice(@ModelAttribute("commodityPrice") CommodityPriceDto addCommodityDto,Model model) {
 
-		List<String> companyNames=this.companyService.fetchAllCompanyNames();
-		model.addAttribute("companyNames",companyNames);
-		return "AddCompanyStockPrice";
+		List<String> commodityNames=this.commodityService.fetchAllCommodityNames();
+		model.addAttribute("commodityNames",commodityNames);
+		return "AddCommodityPrice";
 	}
 	
 	
-	@PostMapping("/newStockPrice")
-	public String newStockPrice(@Valid @ModelAttribute("addstockprice") StockPriceDto addStockDto,BindingResult result,Model model) {
-		List<String> companyNames=this.companyService.fetchAllCompanyNames();
-		model.addAttribute("companyNames",companyNames);
+	@PostMapping("/newCommodityPrice")
+	public String newCommodityPrice(@Valid @ModelAttribute("commodityPrice") CommodityPriceDto commodityPriceDto,BindingResult result,Model model) {
+		List<String> commodityNames=this.commodityService.fetchAllCommodityNames();
+		model.addAttribute("commodityNames",commodityNames);
 		if (result.hasErrors()) {
 			
-			return "AddCompanyStockPrice";
+			return "AddCommodityPrice";
 		}
-		if(this.companyService.addStockPrice(addStockDto))
+		if(this.commodityService.addCommodityPrice(commodityPriceDto))
 		{
-			model.addAttribute("Message", "Stock added successfully");
-			return "AddCompanyStockPrice";
+			model.addAttribute("Message", "Commodity price added successfully");
+			return "AddCommodityPrice";
 		}
-		return "AddCompanyStockPrice";
+		return "AddCommodityPrice";
 	}
 	@RequestMapping("/selectModifyCompany")
 	public String selectModifyCompany(@ModelAttribute("selectCompany") SearchCompanyDto searchCompanyDto) {
@@ -180,23 +185,32 @@ public class BackOfficeController {
 		return "ModifyCompany";
 	}
 	
-	/*
-	 * @RequestMapping("/addCommodityPrice") public String
-	 * addCommodityPrice(@ModelAttribute("addcommodityprice") CommodityPriceDto
-	 * addCommodityDto,Model model) { List<String>
-	 * commodityNames=this.commodityService.fetchSingleCommodityByName(commodityName
-	 * ); model.addAttribute("commodityNames", commodityNames); return
-	 * "AddCommodityPrice"; }
-	 */
-//	@RequestMapping("/addCompanyStockPrice")
-//	public String addCompanyStockPrice(@ModelAttribute("addstockprice") StockPriceDto addStockDto,Model model) {
-//
-//		List<String> companyNames=this.companyService.fetchAllCompanyNames();
-//		model.addAttribute("companyNames",companyNames);
-//		return "AddCompanyStockPrice";
-//	}
-//	
 	
 	
+	
+	  @RequestMapping("/addCompanyStockPrice")
+		public String addCompanyStockPrice(@ModelAttribute("addstockprice") StockPriceDto addStockDto,Model model) {
+
+			List<String> companyNames=this.companyService.fetchAllCompanyNames();
+			model.addAttribute("companyNames",companyNames);
+			return "AddCompanyStockPrice";
+		}
+		
+		
+		@PostMapping("/newStockPrice")
+		public String newStockPrice(@Valid @ModelAttribute("addstockprice") StockPriceDto addStockDto,BindingResult result,Model model) {
+			List<String> companyNames=this.companyService.fetchAllCompanyNames();
+			model.addAttribute("companyNames",companyNames);
+			if (result.hasErrors()) {
+				
+				return "AddCompanyStockPrice";
+			}
+			if(this.companyService.addStockPrice(addStockDto))
+			{
+				model.addAttribute("Message", "Stock price added successfully");
+				return "AddCompanyStockPrice";
+			}
+			return "AddCompanyStockPrice";
+		}
 	
 }

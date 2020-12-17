@@ -1,11 +1,22 @@
 package com.wf.training.pms.serviceImplementation;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wf.training.pms.dto.CommodityDto;
+import com.wf.training.pms.dto.CommodityPriceDto;
+import com.wf.training.pms.dto.CompanyDto;
 import com.wf.training.pms.dto.SearchCommodityDto;
+import com.wf.training.pms.dto.StockPriceDto;
 import com.wf.training.pms.entity.Commodity;
+import com.wf.training.pms.entity.Company;
+import com.wf.training.pms.entity.HistoricalRecordCommodity;
+import com.wf.training.pms.entity.HistoricalRecordCompany;
+import com.wf.training.pms.repository.CommodityHistoricalDataRepository;
 import com.wf.training.pms.repository.CommodityRepository;
 import com.wf.training.pms.service.CommodityService;
 
@@ -14,6 +25,10 @@ public class CommodityServiceImp implements CommodityService {
 
 	@Autowired
 	private CommodityRepository commodityRepository;
+	
+	
+	@Autowired
+	private CommodityHistoricalDataRepository commodityHistoricalDataRepository;
 
 	@Override
 	public CommodityDto addCommodity(CommodityDto dto) {
@@ -26,7 +41,7 @@ public class CommodityServiceImp implements CommodityService {
 	@Override
 	public CommodityDto fetchSingleCommodityByName(SearchCommodityDto searchCommodityDto) {
 		Commodity commodity = this.convertSearchCommodityDtoToEntity(searchCommodityDto);
-		Commodity newCommodity = this.commodityRepository.findByCommodityName(commodity.getCommodityName());
+		Commodity newCommodity = this.commodityRepository.findByCommodityName(commodity.getCommodityName()).orElse(null);
 		CommodityDto commodityOutputDto = this.convertCommodityEntityToOutputDto(newCommodity);
 		return commodityOutputDto;
 	}
@@ -58,7 +73,7 @@ public class CommodityServiceImp implements CommodityService {
 	@Override
 	public CommodityDto fetchSingleCommodityByName(String commodityName) {
 
-		Commodity commodity = this.commodityRepository.findByCommodityName(commodityName);
+		Commodity commodity = this.commodityRepository.findByCommodityName(commodityName).orElse(null);
 		CommodityDto commodityDto = this.convertCommodityEntityToOutputDto(commodity);
 		return commodityDto;
 	}
@@ -70,6 +85,7 @@ public class CommodityServiceImp implements CommodityService {
 		com.setCurrency(dto.getCurrency());
 		com.setPrice(dto.getPrice());
 		com.setDateTime(dto.getDateTime());
+		com.setBoUserId(dto.getBoUserId());
 		return com;
 	}
 
@@ -83,6 +99,42 @@ public class CommodityServiceImp implements CommodityService {
 		outputDto.setBoUserId(newCom.getBoUserId());
 
 		return outputDto;
+	}
+	
+	@Override
+	public List<CommodityDto> fetchAllCommodity() {
+		List<Commodity> commodity = this.commodityRepository.findAll();
+		List<CommodityDto> dto = new ArrayList<CommodityDto>();
+		for (Commodity c : commodity)
+			dto.add(this.convertCommodityEntityToOutputDto(c));
+		return dto;
+	}
+
+
+	@Override
+	public List<String> fetchAllCommodityNames() {
+		List<CommodityDto> commodityList = this.fetchAllCommodity();
+		List<String> commodityNames = new ArrayList<String>();
+		for (CommodityDto c : commodityList)
+			commodityNames.add(c.getCommodityName());
+
+		return commodityNames;
+	}
+	
+
+	@Override
+	public boolean addCommodityPrice(CommodityPriceDto commodityPriceDto) {
+		Commodity commodity = this.commodityRepository.findByCommodityName(commodityPriceDto.getCommodityName()).orElse(null);
+		if (commodity != null) {
+			HistoricalRecordCommodity entity = new HistoricalRecordCommodity();
+			entity.setCommodityId(commodity.getCommodityId());
+			entity.setCommodityPrice(commodityPriceDto.getCommodityPrice());
+			entity.setDateTime(LocalDateTime.now().toString());
+			this.commodityHistoricalDataRepository.save(entity);
+			return true;
+		}
+
+		return false;
 	}
 
 }

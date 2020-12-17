@@ -17,10 +17,10 @@ public class CommodityDto {
 	
 	private String dateTime;
 	private int commodityId;
-	private int boUserId;
+	private String boUserId;
 	
 	public CommodityDto(String commodityName, String currency, Float price, String dateTime, int commodityId,
-			int boUserId) {
+			String boUserId) {
 		super();
 		this.commodityName = commodityName;
 		this.currency = currency;
@@ -64,10 +64,10 @@ public class CommodityDto {
 	public void setCommodityId(int commodityId) {
 		this.commodityId = commodityId;
 	}
-	public int getBoUserId() {
+	public String getBoUserId() {
 		return boUserId;
 	}
-	public void setBoUserId(int boUserId) {
+	public void setBoUserId(String boUserId) {
 		this.boUserId = boUserId;
 	}
 	

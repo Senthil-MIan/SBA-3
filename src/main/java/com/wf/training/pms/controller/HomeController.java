@@ -1,5 +1,12 @@
 package com.wf.training.pms.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,17 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
-import com.wf.training.pms.dto.BackOfficeLoginDto;
 import com.wf.training.pms.dto.AdminLoginDto;
+import com.wf.training.pms.dto.BackOfficeLoginDto;
 import com.wf.training.pms.dto.InvestorDto;
 import com.wf.training.pms.dto.LoginDto;
+import com.wf.training.pms.service.AdminUserService;
 import com.wf.training.pms.service.BackOfficeUserService;
 import com.wf.training.pms.service.InvestorService;
-import com.wf.training.pms.service.AdminUserService;
 
 @Controller
 @SessionAttributes("Investor")
@@ -46,6 +50,10 @@ public class HomeController {
 	@PostMapping("/validate")
 	public String loginValidate(@Valid @ModelAttribute("superuser") AdminLoginDto dto, BindingResult result,
 			Model model) {
+		/*
+		 * Map<String,String> map = new HashMap<>(); map.put("username",
+		 * dto.getSuperUserId()); map.put("type", ); request.getSession("")
+		 */
 		System.out.println("Logging in");
 		if (result.hasErrors()) {
 			return "AdminLogin";
@@ -84,6 +92,8 @@ public class HomeController {
 
 		session.invalidate();
 		HttpSession newSession = request.getSession();
+		
+		
 
 		boolean status = this.investorService.validateInvestor(investorLoginDto);
 		newSession.setAttribute("Investor", investorLoginDto);
@@ -104,10 +114,13 @@ public class HomeController {
 
 	@PostMapping("/BackOfficeLoginvalidate")
 	public String boLoginValidate(@Valid @ModelAttribute("backofficeuser") BackOfficeLoginDto user,
-			BindingResult result, Model model) {
+			BindingResult result, Model model, HttpServletRequest request, HttpSession session) {
+		session.invalidate();
+		HttpSession newSession = request.getSession();
 		if (result.hasErrors()) {
 			return "BackOfficeUserLogin";
 		} else if (BackOfficeService.validateUser(user)) {
+			newSession.setAttribute("BO", user);
 			return "BackOfficeUserHomePage";
 		} else {
 			model.addAttribute("Message", "Invalid Credentials");

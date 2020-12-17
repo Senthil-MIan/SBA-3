@@ -17,13 +17,13 @@ public class BackofficeInputDto {
 	@NotBlank(message="Password is Mandatory")
 	private String password;
 	
-	private Integer loginId;
+	private String loginId;
 
-	public Integer getLoginId() {
+	public String getLoginId() {
 		return loginId;
 	}
 
-	public void setLoginId(Integer loginId) {
+	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
 

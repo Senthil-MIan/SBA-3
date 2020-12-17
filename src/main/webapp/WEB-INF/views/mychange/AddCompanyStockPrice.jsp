@@ -57,6 +57,15 @@ body {
 				
 					<td colspan=2><button>Submit</button></td>
 				</tr>
+				<tr>
+					<td></td>
+
+					<td>
+						<h4 style="margin-left: -87px; color: red; font-size: 20px;"
+							id="errors">${Message}</h4>
+					</td>
+					<td></td>
+				</tr>
 		</table>
 		<hr>
 		</spring:form>

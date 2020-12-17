@@ -7,50 +7,34 @@ import java.time.LocalDateTime;
 
 public class CommodityPriceDto {
 	
-//	this.commodityName = commodityName;
-//	this.currency = currency;
-//	this.price = price;
-//	this.dateTime = dateTime;
-//	this.commodityId = commodityId;
-//	this.boUserId = boUserId;
 	
 	private String commodityName;
-	private float Price;
-	
-	
 	private String dateTime;
-	private int commodityId;
-	
-	
 	@DecimalMin("0.1")
 	@NotNull(message="Commodity price should not be empty")
 	private Float commodityPrice;
 	
-	
-	
-	
+	public String getCommodityName() {
+		return commodityName;
+	}
+	public void setCommodityName(String commodityName) {
+		this.commodityName = commodityName;
+	}
 	public String getDateTime() {
 		return dateTime;
 	}
-
-	public void String(String dateTime) {
+	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
-
-	public Float getPrice() {
-		return Price;
+	public Float getCommodityPrice() {
+		return commodityPrice;
 	}
-
-	public void setPrice(Float Price) {
-		this.Price = Price;
+	public void setCommodityPrice(Float commodityPrice) {
+		this.commodityPrice = commodityPrice;
 	}
 	
-	public String getcommodityName() {
-		return commodityName;
-	}
-
-	public void setcommodityName(String commodityName) {
-		this.commodityName = commodityName;
-	}
+	
+	
+	
 
 }
