@@ -3,11 +3,13 @@ package com.wf.training.pms.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 
 @Entity
+@Table(name = "admin")
 public class AdminUser {
 	
 	@Id
