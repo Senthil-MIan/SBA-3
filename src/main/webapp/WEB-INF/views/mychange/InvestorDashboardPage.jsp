@@ -38,34 +38,36 @@ body {
 				<div class="card-body d-flex flex-column align-items-center"">
 					<div align="left">
 					<H3>Investor Dashboard</H3>
-
-					<a href="RecentlyViewedCompanies.jsp"> <b> Recently Viewed
-							Companies </b>
-					</a> <br> <a href="CurrentPortfoliovalues.jsp"> <b>
-							Current Portfolio values </b>
-					</a> <br> <a href="AmountInvestedasonDate.jsp"> <b> Amount
-							Invested as on Date </b>
-					</a> <br> <a href="AmountEarnedasonDate.jsp"> <b> Amount
-							Earned as on Date </b>
-					</a> <br> <a href="TrendingChart.jsp"> <b> Trending Chart
-					</b>
-					</a> <br> <a href="SelectCurrencyofTrading.jsp"> <b>
-							Select Currency of Trading </b>
-					</a> <br> <a href="Searchcompanyandaccessprofile.jsp"> <b>
-							Search company and access profile </b>
-					</a> <br> <a href="Choosecompanies.jsp"> <b> Choose
-							companies and compare their current share value </b>
-					</a> <br> <a href="BuyStocks.jsp"> <b> Buy Stocks </b>
-					</a> <br> <a href="SellStocks.jsp"> <b> Sell Stocks </b>
-					</a> <br> <a href="DepositAmount.jsp"> <b> Deposit Amount
-					</b>
-					</a> <br> <a href="WithdrawAmount.jsp"> <b> Withdraw
-							Amount </b>
-					</a> <br> <a href="GeneratePortfolioReport.jsp"> <b>
-							Generate Portfolio Report </b>
-					</a> <br> <b><a href="Annually.jsp"> Annually </a> <br> <a
+	<ol>
+					<li><a href="RecentlyViewedCompanies.jsp"> <b> Recently Viewed
+							Companies </b></li>
+						</a> <br> <li><a href="CurrentPortfoliovalues.jsp"> <b>
+							Current Portfolio values </b></li>
+						</a> <br> <li><a href="AmountInvestedasonDate.jsp"> <b> Amount
+							Invested as on Date </b></li>
+						</a> <br> <li><a href="AmountEarnedasonDate.jsp"> <b> Amount
+							Earned as on Date </b></li>
+						</a> <br> <li><a href="TrendingChart.jsp"> <b> Trending Chart
+					</b></li>
+						</a> <br> <li><a href="SelectCurrencyofTrading.jsp"> <b>
+							Select Currency of Trading </b></li>
+						</a> <br> <li><a href="Searchcompanyandaccessprofile.jsp"> <b>
+							Search company and access profile </b></li>
+						</a> <br> <li><a href="Choosecompanies.jsp"> <b> Choose
+							companies and compare their current share value </b></li>
+						</a> <br> <li><a href="BuyStocks.jsp"> <b> Buy Stocks </b></li>
+						</a> <br> <li><a href="SellStocks.jsp"> <b> Sell Stocks </b></li>
+						</a> <br> <li><a href="DepositAmount.jsp"> <b> Deposit Amount
+					</b></li>
+						</a> <br> <li><a href="WithdrawAmount.jsp"> <b> Withdraw
+							Amount </b></li>
+						</a> <br> <li><a href="GeneratePortfolioReport.jsp"> <b>
+							Generate Portfolio Report </b></li>
+						</a> <br> <b><li><a href="Annually.jsp"> Annually </a> <br> <a
 						href="Monthly.jsp"> Monthly </a> <br> <a
-						href="WithinPeriod.jsp"> Within given period </a> </b><br>
+						href="WithinPeriod.jsp"> Within given period </a> </b></li><br>
+						
+						</ol>
 					</div>
 				</div>
 			</div>
