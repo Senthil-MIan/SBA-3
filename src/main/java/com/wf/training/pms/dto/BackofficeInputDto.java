@@ -14,18 +14,21 @@ public class BackofficeInputDto {
 	@NotBlank(message="Email ID is Mandatory")
 	private String emailId;
 	
+	@NotBlank(message="User name ID is Mandatory")
+	private String userName;
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@NotBlank(message="Password is Mandatory")
 	private String password;
 	
-	private String loginId;
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
+	
 
 	public String getFirstName() {
 		return firstName;

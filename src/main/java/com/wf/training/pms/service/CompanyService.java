@@ -12,7 +12,7 @@ public interface CompanyService {
 	public List<CompanyDto> fetchAllCompanies();
 	public CompanyDto fetchSingleCompany(Long id);
 	public CompanyDto addCompany(CompanyDto addCompanyInputDto);
-	public CompanyDto editCompany(Long id, SearchCompanyDto employeeInputDto);
+	public CompanyDto editCompany(Long id, SearchCompanyDto searchCompanyDto);
 	public CompanyDto deleteCompany(Long id);
 	public CompanyDto fetchSingleCompanyByName(SearchCompanyDto searchCompanyDto);
 	public CompanyDto fetchSingleCompanyByName(String companyTitle);

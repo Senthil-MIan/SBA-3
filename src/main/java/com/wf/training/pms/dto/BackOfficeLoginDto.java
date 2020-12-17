@@ -8,8 +8,8 @@ public class BackOfficeLoginDto {
 	@NotBlank(message="Password is Mandatory")
 	private String password;
 	
-	@NotNull(message="User ID is Mandatory")
-	private String loginId;
+	@NotNull(message="User name is Mandatory")
+	private String userName;
 
 	public String getPassword() {
 		return password;
@@ -19,12 +19,13 @@ public class BackOfficeLoginDto {
 		this.password = password;
 	}
 
-	public String getLoginId() {
-		return loginId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
+
 
 }

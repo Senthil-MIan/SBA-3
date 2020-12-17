@@ -8,5 +8,5 @@ import com.wf.training.pms.entity.BackOfficeUser;
 @Repository
 public interface BackOfficeUserRepository extends JpaRepository<BackOfficeUser, String>{
 
-	BackOfficeUser findByLoginId(String id);
+	BackOfficeUser findByuserName(String userName);
 }

@@ -28,9 +28,9 @@ body {
 	<h4 id =error>${Message}</h4>
 	<spring:form action="${pageContext.request.contextPath}/BackOfficeLoginvalidate" method="POST" modelAttribute="backofficeuser"> 
 		<div>
-			<div><label >Login ID</label></div>
-			<div><spring:input path="loginId" type="text" />
-			<spring:errors path="loginId" cssClass="error"/></div>
+			<div><label >User Name</label></div>
+			<div><spring:input path="userName" type="text" />
+			<spring:errors path="userName" cssClass="error"/></div>
 		</div>
 			<br/>
 		<div>

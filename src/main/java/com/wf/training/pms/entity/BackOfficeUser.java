@@ -27,7 +27,7 @@ public class BackOfficeUser {
 	@Column(name="userDataId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int userDataId;
-	private String loginId;
+	private String userName;
 
 	public int getUserDataId() {
 		return userDataId;
@@ -65,12 +65,15 @@ public class BackOfficeUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getLoginId() {
-		return loginId;
+
+	public String getUserName() {
+		return userName;
 	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
+	
 	
 	
 }

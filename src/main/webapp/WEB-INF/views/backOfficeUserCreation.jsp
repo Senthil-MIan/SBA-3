@@ -59,6 +59,13 @@
 					<spring:errors path="emailId" cssClass="error"/></div>
 				</div>
 					<br/>
+					
+					<div>
+					<div><label>User Name:</label></div>
+					<div><spring:input path="userName" type="text" />
+					<spring:errors path="userName" cssClass="error"/></div>
+				</div>
+					<br/>
 				<div>
 					<div><label>Password: </label></div>
 					<div><spring:input path="password" type="password" />

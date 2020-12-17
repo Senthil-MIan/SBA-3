@@ -71,7 +71,7 @@ public class BackOfficeController {
 	@RequestMapping("/AddCompany")
 	public String returnAddCompany(@ModelAttribute("createCompany") CompanyDto createCompany,HttpSession session) {
 		BackOfficeLoginDto user = (BackOfficeLoginDto)session.getAttribute("BO");
-		System.out.print(user.getLoginId());
+		System.out.print(user.getUserName());
 		return "CreateCompany";
 	}
 	
@@ -120,7 +120,7 @@ public class BackOfficeController {
 			return "CreateCommodity";
 		}
 		BackOfficeLoginDto user = (BackOfficeLoginDto)session.getAttribute("BO");
-		dto.setBoUserId(user.getLoginId());
+		dto.setBoUserId(user.getUserName());
 		CommodityDto output=this.commodityService.addCommodity(dto);
 		model.addAttribute("CommodityOutput", output);
 		return "SavedCommodity";

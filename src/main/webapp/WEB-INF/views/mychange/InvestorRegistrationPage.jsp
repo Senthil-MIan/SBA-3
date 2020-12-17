@@ -76,7 +76,7 @@ body {
 						</tr>
 						<tr>
 							<td><spring:label path="mobileNumber"> Mobile Number: </spring:label></td>
-							<td colspan=2><spring:input type="text" path="mobileNumber"></spring:input>
+							<td colspan=2><spring:input type="text" path="mobileNumber" value="Enter phone number"></spring:input>
 							</td>
 						</tr>
 						<tr>

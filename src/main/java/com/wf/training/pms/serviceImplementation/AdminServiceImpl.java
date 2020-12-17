@@ -32,8 +32,9 @@ public class AdminServiceImpl implements AdminUserService {
 		buser.setFirstName(user.getFirstName());
 		buser.setLastName(user.getLastName());
 		buser.setPassword(user.getPassword());
+		buser.setUserName(user.getUserName());
 		this.BackOfficeUserRepository.save(buser);
-		user.setLoginId(buser.getLoginId());
+		
 		
 		return true;
 	}

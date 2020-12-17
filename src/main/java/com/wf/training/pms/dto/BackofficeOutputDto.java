@@ -5,16 +5,16 @@ public class BackofficeOutputDto {
 	private String firstName;
 	private String lastName;
 	private String emailId;
+	private String userName;
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	private String password;
-	private Integer loginId;
-
-	public Integer getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(Integer loginId) {
-		this.loginId = loginId;
-	}
 
 	public String getFirstName() {
 		return firstName;

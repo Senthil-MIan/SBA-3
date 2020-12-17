@@ -15,7 +15,8 @@ public class BackOfficeUserServiceImpl implements BackOfficeUserService {
 
 	@Override
 	public boolean validateUser(BackOfficeLoginDto user) {
-		BackOfficeUser boUser = BackOfficeUserRepository.findByLoginId(user.getLoginId());
+		BackOfficeUser boUser = BackOfficeUserRepository.findByuserName(user.getUserName());
+				
 		if (boUser == null) {
 			return false;
 		} else {

@@ -108,10 +108,10 @@ public class InvestorContoller {
 		return "redirect:/user/home";
 	}
 
-	@RequestMapping("/profile-entry")
-	public String profileEntry(Model model) {
-		return "employee-profile-entry";
-	}
+//	@RequestMapping("/profile-entry")
+//	public String profileEntry(Model model) {
+//		return "employee-profile-entry";
+//	}
 
 	@RequestMapping("/wallet")
 	public String wallet() {

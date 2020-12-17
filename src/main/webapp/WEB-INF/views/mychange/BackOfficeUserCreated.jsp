@@ -35,7 +35,7 @@ body {
 <h4>First Name : ${backofficeuser.firstName}</h4>
 <h4>Last Name  : ${backofficeuser.lastName}</h4>
 <h4>Email      : ${backofficeuser.emailId}</h4>
-<h4>Login ID   : ${backofficeuser.loginId}</h4>
+<h4>User Name   : ${backofficeuser.userName}</h4>
 <h4>Password   : ${backofficeuser.password}</h4>
 
 <jsp:include page="footer.jsp" />

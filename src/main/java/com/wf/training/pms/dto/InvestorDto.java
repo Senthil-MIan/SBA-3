@@ -14,10 +14,11 @@ public class InvestorDto {
 	@NotBlank
 	private String lastName;
 	@NotNull
-	@Min(value = 1000000000)
+
+	
 	private long mobileNumber;
 	@NotBlank
-	@Size(min=10, max =10)
+	@Size(min=5, max =10)
 	private String panId;
 	@NotBlank
 	private String gender;
