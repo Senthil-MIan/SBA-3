@@ -24,17 +24,19 @@ public class BackOfficeUser {
 	private String emailId;
 	
 	@Id
-	@Column(name="LoginId")
+	@Column(name="userDataId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	private int userDataId;
 	private String loginId;
-	public BackOfficeUser(String firstName, String lastName, String emailId, String password, String loginId) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailId = emailId;
-		this.password = password;
-		this.loginId = loginId;
+
+	public int getUserDataId() {
+		return userDataId;
 	}
+
+	public void setUserDataId(int userDataId) {
+		this.userDataId = userDataId;
+	}
+
 	public BackOfficeUser() {
 		// TODO Auto-generated constructor stub
 	}
