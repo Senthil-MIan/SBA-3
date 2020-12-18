@@ -16,6 +16,8 @@ public interface InvestorService {
 	public InvestorDto deleteInvestor(Long id);
 	boolean validateInvestor(LoginDto investorLoginDto);
 	public RecentlyViewedCompanies addRecentViewCompany(LoginDto investorLoginDto, CompanyDto companyDto);
-	public List<CompanyDto> getAllRecentViewCompanies(String loginKey);	
+	public List<CompanyDto> getAllRecentViewCompanies(String loginKey);
+	public double getWalletBalance(LoginDto investorLoginDto);	
+	public double addMoneyToWallet(LoginDto investorLoginDto,double newAmount);
 	
 }

@@ -58,6 +58,7 @@ public class InvestorServiceImp implements InvestorService {
 			return null;
 		}
 		Investor investor = this.convertInvestorDtoToEntity(investorDto);
+		investor.setWalletBalance(2500.0);
 		Investor newInvestor = this.InvestorRepository.save(investor);
 		InvestorDto outInvestorDto = this.convertInvestorEntityToDto(newInvestor);
 		this.walletRepository.save(this.convertInvestorDtoToWalletEntity(outInvestorDto));
@@ -217,6 +218,28 @@ public class InvestorServiceImp implements InvestorService {
 		investorWalletTransaction.setShareTransactionId(shareTransactionId);
 
 		return investorWalletTransaction;
+	}
+
+	@Override
+	public double getWalletBalance(LoginDto investorLoginDto) {
+		Investor investor = this.InvestorRepository.findByLoginKey(investorLoginDto.getLoginKey()).orElse(null);
+		return investor.getWalletBalance();
+	}
+	
+	@Override
+	public double addMoneyToWallet(LoginDto investorLoginDto,double newAmount) {
+	Investor investor =this.InvestorRepository.findByLoginKey(investorLoginDto.getLoginKey()).orElse(null);
+	InvestorDto outInvestorDto = this.convertInvestorEntityToDto(investor);
+//	Long walletId =
+	InvestorWallet wallet = this.walletRepository.findByInvestorID(investor.getInvestorId()).orElse(null);
+	if(wallet != null) {
+		InvestorWalletTransaction invWalletTransaction = this.convertInvestorDtoToWalletTransEntity(outInvestorDto,
+				"Credit",newAmount, 0);
+		investor.setWalletBalance(investor.getWalletBalance()+newAmount);
+		this.walletTransactionRepository.save(invWalletTransaction);
+	}
+	this.InvestorRepository.save(investor);
+	return investor.getWalletBalance();
 	}
 
 }

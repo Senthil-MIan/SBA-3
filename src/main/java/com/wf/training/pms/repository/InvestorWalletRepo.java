@@ -7,7 +7,7 @@ import com.wf.training.pms.entity.InvestorWallet;
 import com.wf.training.pms.entity.RecentlyViewedCompanies;
 
 @Repository
-public interface InvestorWalletRepository extends JpaRepository<InvestorWallet, Long>{
+public interface InvestorWalletRepo extends JpaRepository<InvestorWallet, Long>{
 	
 	Optional<InvestorWallet> findByInvestorID(int investorId);
 

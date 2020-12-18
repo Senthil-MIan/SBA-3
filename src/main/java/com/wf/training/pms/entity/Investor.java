@@ -24,7 +24,16 @@ public class Investor {
 	private String password;
 	@Column(unique=true)
 	private String loginKey;
+	private double walletBalance;
 	
+	public double getWalletBalance() {
+		return walletBalance;
+	}
+
+	public void setWalletBalance(double walletBalance) {
+		this.walletBalance = walletBalance;
+	}
+
 	public String getLoginKey() {
 		return loginKey;
 	}

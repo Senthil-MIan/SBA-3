@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import com.wf.training.pms.dto.CompanyHistoricalDataOutputDto;
 import com.wf.training.pms.dto.LoginDto;
 import com.wf.training.pms.dto.SearchCommodityDto;
+import com.wf.training.pms.dto.AddWalletMoneyDto;
 import com.wf.training.pms.dto.CommodityDto;
+import com.wf.training.pms.dto.CommodityPriceDto;
 import com.wf.training.pms.dto.CompanyDto;
 import com.wf.training.pms.dto.SearchCompanyDto;
 import com.wf.training.pms.service.CommodityService;
@@ -42,7 +46,7 @@ public class InvestorContoller {
 	@RequestMapping(value = { "/home", "/dashboard", "/index" })
 	public String home(@SessionAttribute("Investor") LoginDto investorLoginDto, Model model) {
 		model.addAttribute("Investor", investorLoginDto);
-		return "invHomePage";
+		return "InvestorDashboardPage";
 	}
 
 	@RequestMapping("/searchCompany")
@@ -127,6 +131,23 @@ public class InvestorContoller {
 		model.addAttribute("recentViewCompanies", companyDto);
 
 		return "invRecentViewCompanies";
+	}
+	
+	@RequestMapping("/depositMoney")
+	public String depositMoney(@SessionAttribute("Investor") LoginDto investorLoginDto,@ModelAttribute("addWalletMoney") AddWalletMoneyDto addWalletMoneyDto,Model model) {
+		model.addAttribute("balance",this.investorService.getWalletBalance(investorLoginDto));
+		addWalletMoneyDto.setAddAmount(Float.valueOf(0));
+		return "DepositMoney";
+	}
+	@RequestMapping("/AddMoney")
+	public String AddMoney(@SessionAttribute("Investor") LoginDto investorLoginDto,@Valid @ModelAttribute("addWalletMoney") AddWalletMoneyDto addWalletMoneyDto,BindingResult result,Model model) {
+		if (result.hasErrors()) {
+			return "DepositMoney";
+		}	
+		double currentBalance = this.investorService.addMoneyToWallet(investorLoginDto, addWalletMoneyDto.getAddAmount());
+		model.addAttribute("balance",currentBalance);
+		model.addAttribute("Message","Amount Added Successfully");
+		return "DepositMoney";
 	}
 
 }
