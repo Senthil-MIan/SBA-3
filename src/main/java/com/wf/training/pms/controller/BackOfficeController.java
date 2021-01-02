@@ -17,6 +17,9 @@ import javax.validation.Valid;
 
 
 import com.wf.training.pms.dto.StockPriceDto;
+import com.wf.training.pms.dto.SelectMonthDto;
+import com.wf.training.pms.dto.SelectPeriodDto;
+import com.wf.training.pms.dto.SelectYearDto;
 import com.wf.training.pms.dto.BackOfficeLoginDto;
 import com.wf.training.pms.dto.CommodityDto;
 import com.wf.training.pms.dto.CommodityPriceDto;
@@ -25,6 +28,7 @@ import com.wf.training.pms.dto.SearchCommodityDto;
 import com.wf.training.pms.dto.SearchCompanyDto;
 import com.wf.training.pms.service.CommodityService;
 import com.wf.training.pms.service.CompanyService;
+import com.wf.training.pms.service.InvestorService;
 
 @Controller
 @RequestMapping("/bouser")
@@ -35,6 +39,9 @@ public class BackOfficeController {
 	
 	@Autowired
 	private CompanyService companyService;
+	
+	@Autowired
+	private InvestorService investorService;
 	
 	@RequestMapping("/home")
 	public String returnHome() {
@@ -212,5 +219,45 @@ public class BackOfficeController {
 			}
 			return "AddCompanyStockPrice";
 		}
-	
+		
+		
+		@RequestMapping("/ViewAnnualReport")
+		public String annualReport(@ModelAttribute("annualreport") SelectYearDto year,Model model) {
+			model.addAttribute("year", year);
+			return "CreateAnnualReport";
+		}
+		
+		@RequestMapping("/ViewMonthlyReport")
+		public String monthlyReport(@ModelAttribute("monthlyreport") SelectMonthDto month,Model model) {
+			//String[] months= {"January","February","March","April","May","June","July","August","September","October","November","December"};
+			String[] months= {"-01-","-02-","-03-","-04-","-05-","-06-","-07-","-08-","-09-","-10-","-11-","-12-"};
+			model.addAttribute("months", months);
+			return "CreateMonthlyReport";
+		}
+		
+		@RequestMapping("/ViewPeriodicReport")
+		public String periodicReport(@ModelAttribute("periodicreport") SelectPeriodDto period,Model model) {
+			return "CreatePeriodicReport";
+		}
+		
+		@PostMapping("/returnAnnualReport")
+		public String returnAnnualReport(@ModelAttribute("annualreport") SelectYearDto year,Model model) {
+				model.addAttribute("transactions", this.investorService.findAllShareTransaction());
+			return "AnnualReport";
+		}
+		
+		@PostMapping("/returnMonthlyReport")
+		public String returnMonthlyReport(@ModelAttribute("monthlyreport") SelectMonthDto month,Model model) {
+				model.addAttribute("transactions", this.investorService.findAllShareTransaction());
+			return "MonthlyReport";
+		}
+		
+		@PostMapping("/returnPeriodicReport")
+		public String returnPeriodicReport(@ModelAttribute("periodicreport") SelectPeriodDto period,Model model) {
+				model.addAttribute("transactions", this.investorService.findAllShareTransactionBetweenDates(period.getStartDate(),period.getEndDate()));
+			return "PeriodicReport";
+		}
+		
+		
+		
 }

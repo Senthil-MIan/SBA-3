@@ -41,18 +41,18 @@ body {
 		</div>
 
 	<div align="center">
-		<spring:form action="${pageContext.request.contextPath}/user/AddMoney" method="POST" modelAttribute="moneyInputDto">
+		<spring:form action="${pageContext.request.contextPath}/user/withdraw" method="post" modelAttribute="moneyInputDto">
 		<table>
 			
 				<tr>
-					<td><spring:label path="amount">Add Amount</spring:label></td>
+					<td><spring:label path="amount">Withdraw Amount</spring:label></td>
 					<td><spring:input path="amount"/></td>
 					<td><spring:errors path="amount" cssClass="error" id="errors"/></td>
 				</tr>
 				
 				<tr>
 				
-					<td colspan=2><button>Add</button></td>
+					<td colspan=2><button>Withdraw</button></td>
 				</tr>
 				<tr>
 					<td></td>

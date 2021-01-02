@@ -1,17 +1,26 @@
 package com.wf.training.pms.repository;
 
-import java.util.Optional;
+import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.wf.training.pms.entity.Commodity;
-import com.wf.training.pms.entity.Company;
 
 @Repository
 public interface CommodityRepository extends JpaRepository<Commodity, Integer>{
 
-	Optional<Commodity> findByCommodityName(String commodityName);
+	Commodity findByCommodityName(String commodityName);
+	
+	
+	@Transactional
+	@Modifying
+    @Query("UPDATE Commodity c SET c.price = :price WHERE c.commodityName = :commodityName")
+    void updateCommodityPrice(@Param("commodityName") String commodityName, @Param("price") Float commodityPrice);
+
 
 }
 

@@ -1,13 +1,7 @@
-package com.wf.training.pms.entity;
+package com.wf.training.pms.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-@Entity
-public class ShareTransaction {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ShareTransactionDto {
+	
 	private Long shareTransactionId;
 	private String transactionType;
 	private String stockName;
@@ -31,6 +25,24 @@ public class ShareTransaction {
 	}
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
+	}
+	public String getStockName() {
+		return stockName;
+	}
+	public void setStockName(String stockName) {
+		this.stockName = stockName;
+	}
+	public double getStockPrice() {
+		return stockPrice;
+	}
+	public void setStockPrice(double stockPrice) {
+		this.stockPrice = stockPrice;
+	}
+	public Long getWalletId() {
+		return walletId;
+	}
+	public void setWalletId(Long walletId) {
+		this.walletId = walletId;
 	}
 	public int getTransactionShareCount() {
 		return transactionShareCount;
@@ -56,29 +68,11 @@ public class ShareTransaction {
 	public void setCommission(double commission) {
 		this.commission = commission;
 	}
-	public String getStockName() {
-		return stockName;
-	}
-	public void setStockName(String stockName) {
-		this.stockName = stockName;
-	}
-	public Long getWalletId() {
-		return walletId;
-	}
-	public void setWalletId(Long walletId) {
-		this.walletId = walletId;
-	}
 	public String getCompanyCommodity() {
 		return companyCommodity;
 	}
 	public void setCompanyCommodity(String companyCommodity) {
 		this.companyCommodity = companyCommodity;
-	}
-	public double getStockPrice() {
-		return stockPrice;
-	}
-	public void setStockPrice(double stockPrice) {
-		this.stockPrice = stockPrice;
 	}
 	public double getEarning() {
 		return earning;

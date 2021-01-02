@@ -41,7 +41,7 @@ public class CommodityServiceImp implements CommodityService {
 	@Override
 	public CommodityDto fetchSingleCommodityByName(SearchCommodityDto searchCommodityDto) {
 		Commodity commodity = this.convertSearchCommodityDtoToEntity(searchCommodityDto);
-		Commodity newCommodity = this.commodityRepository.findByCommodityName(commodity.getCommodityName()).orElse(null);
+		Commodity newCommodity = this.commodityRepository.findByCommodityName(commodity.getCommodityName());
 		CommodityDto commodityOutputDto = this.convertCommodityEntityToOutputDto(newCommodity);
 		return commodityOutputDto;
 	}
@@ -73,7 +73,7 @@ public class CommodityServiceImp implements CommodityService {
 	@Override
 	public CommodityDto fetchSingleCommodityByName(String commodityName) {
 
-		Commodity commodity = this.commodityRepository.findByCommodityName(commodityName).orElse(null);
+		Commodity commodity = this.commodityRepository.findByCommodityName(commodityName);
 		CommodityDto commodityDto = this.convertCommodityEntityToOutputDto(commodity);
 		return commodityDto;
 	}
@@ -124,7 +124,7 @@ public class CommodityServiceImp implements CommodityService {
 
 	@Override
 	public boolean addCommodityPrice(CommodityPriceDto commodityPriceDto) {
-		Commodity commodity = this.commodityRepository.findByCommodityName(commodityPriceDto.getCommodityName()).orElse(null);
+		Commodity commodity = this.commodityRepository.findByCommodityName(commodityPriceDto.getCommodityName());
 		if (commodity != null) {
 			HistoricalRecordCommodity entity = new HistoricalRecordCommodity();
 			entity.setCommodityId(commodity.getCommodityId());

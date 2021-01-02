@@ -49,9 +49,11 @@ body {
 				href="${pageContext.request.contextPath}/bouser/addCommodityPrice">Add
 				Commodity Price</a><br>
 			<br>
-			<br> <label> <b>Generate Commission</b>
-			<!-- </label><br> <a href="#">Annual Report</a><br> <a href="#">Monthly
-				Report</a><br> <a href="#">Periodic Report</a><br> -->
+			<br> <label> <b>Generate Commission</b>	</label><br> 
+			<a href="${pageContext.request.contextPath}/bouser/ViewAnnualReport">Annual Report</a><br>
+			<a href="${pageContext.request.contextPath}/bouser/ViewMonthlyReport">Monthly Report</a><br>
+			<a href="${pageContext.request.contextPath}/bouser/ViewPeriodicReport">Periodic Report</a><br>
+		</ul>
 
 		</div>
 	</div>

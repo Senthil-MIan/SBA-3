@@ -1,8 +1,5 @@
 package com.wf.training.pms.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -18,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.wf.training.pms.dto.AdminLoginDto;
 import com.wf.training.pms.dto.BackOfficeLoginDto;
+import com.wf.training.pms.dto.HomePageOutputDto;
 import com.wf.training.pms.dto.InvestorDto;
 import com.wf.training.pms.dto.LoginDto;
 import com.wf.training.pms.service.AdminUserService;
@@ -98,6 +96,10 @@ public class HomeController {
 		boolean status = this.investorService.validateInvestor(investorLoginDto);
 		newSession.setAttribute("Investor", investorLoginDto);
 		if (status == true) {
+			HomePageOutputDto homePageOutputDto = this.investorService.fetchPortFolioDetails(investorLoginDto.getLoginKey());
+			model.addAttribute("Investor", investorLoginDto);
+			model.addAttribute("homePageOutputDto", homePageOutputDto);
+			model.addAttribute("balance",this.investorService.getWalletBalance(investorLoginDto));
 			return "InvestorDashboardPage";
 		} else {
 			model.addAttribute("Message", "Invalid Credentials");
@@ -149,5 +151,6 @@ public class HomeController {
 		model.addAttribute("superuser", superuser);
 		return "AdminLogin";
 	}
+	
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -25,48 +26,90 @@ body {
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	
-	<div align="right">	
-		<p><a href="${pageContext.request.contextPath}/logout">Logout</a></p>
-		</div>
+
+	<div align="right">
+		<p>
+			<a href="${pageContext.request.contextPath}/logout">Logout</a>
+		</p>
+	</div>
 	<div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay"
 		align="left">
-		
+
 		<main class="bmd-layout-content">
 		<div class="container">
 			<div class="card">
 				<div class="card-body d-flex flex-column align-items-center"">
 					<div align="left">
-					<H3>Investor Dashboard</H3>
-	<ol>
-					<li><a href="RecentlyViewedCompanies.jsp"> <b> Recently Viewed
-							Companies </b></li>
-						</a> <br> <li><a href="CurrentPortfoliovalues.jsp"> <b>
-							Current Portfolio values </b></li>
-						</a> <br> <li><a href="AmountInvestedasonDate.jsp"> <b> Amount
-							Invested as on Date </b></li>
-						</a> <br> <li><a href="AmountEarnedasonDate.jsp"> <b> Amount
-							Earned as on Date </b></li>
-						</a> <br> <li><a href="TrendingChart.jsp"> <b> Trending Chart
-					</b></li>
-						</a> <br> <li><a href="SelectCurrencyofTrading.jsp"> <b>
-							Select Currency of Trading </b></li>
-						</a> <br> <li><a href="Searchcompanyandaccessprofile.jsp"> <b>
-							Search company and access profile </b></li>
-						</a> <br> <li><a href="Choosecompanies.jsp"> <b> Choose
-							companies and compare their current share value </b></li>
-						</a> <br> <li><a href="BuyStocks.jsp"> <b> Buy Stocks </b></li>
-						</a> <br> <li><a href="SellStocks.jsp"> <b> Sell Stocks </b></li>
-						</a> <br> <li><a href="${pageContext.request.contextPath}/user/depositMoney"> <b> Deposit Amount
-					</b></li>
-						</a> <br> <li><a href="WithdrawAmount.jsp"> <b> Withdraw
-							Amount </b></li>
-						</a> <br> <li><a href="GeneratePortfolioReport.jsp"> <b>
-							Generate Portfolio Report </b></li>
-						<!-- </a> <br> <b><li><a href="Annually.jsp"> Annually </a> <br> <a
+						<H3>Investor Dashboard	</H3>
+						<div class="row mt-2">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-body">Current Portfolio value : 
+						<b class= color><fmt:formatNumber type="number" maxFractionDigits="2" value="${homePageOutputDto.currentPortfolioValue}"/></b></div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-body">Wallet Balance : 
+						<b class= color><fmt:formatNumber type="number" maxFractionDigits="2" value="${balance}"/> INR</b></div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-body">Amount Invested : 
+						<b class= color><fmt:formatNumber type="number" maxFractionDigits="2" value="${homePageOutputDto.amountInvested}"/></b></div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-body">Amount Earned : 
+						<b class= color><fmt:formatNumber type="number" maxFractionDigits="2" value="${homePageOutputDto.amountEarned}"/></b></div>
+					</div>
+				</div>
+			</div>
+					
+						
+						
+						<ol>
+						<br>
+							<li><a href="${pageContext.request.contextPath}/user/recentViewCompanies"> <b>
+										Recently Viewed Companies </b></li>
+							</a>												
+							
+							<br>
+							<li><a href="TrendingChart.jsp"> <b> Trending Chart
+								</b></li>
+							</a>
+							<br>
+							
+							<li><a
+								href="${pageContext.request.contextPath}/user/searchCompany">
+									<b> Search Company </b></li>
+							</a>
+					
+							<br>
+							<li><a href="Choosecompanies.jsp"> <b> Choose
+										companies and compare their current share value </b></li>
+							</a>
+							
+							<br>
+							<li><a
+								href="${pageContext.request.contextPath}/user/depositMoney">
+									<b> Deposit Amount </b></li>
+							</a>
+							<br>
+							<li><a href="${pageContext.request.contextPath}/user/withdrawMoney"> <b> Withdraw
+										Amount </b></li>
+							</a>
+							<br>
+							<li><a href="GeneratePortfolioReport.jsp"> <b>
+										Generate Portfolio Report </b></li>
+							<!-- </a> <br> <b><li><a href="Annually.jsp"> Annually </a> <br> <a
 						href="Monthly.jsp"> Monthly </a> <br> <a
 						href="WithinPeriod.jsp"> Within given period </a> </b></li><br> -->
-						
+
 						</ol>
 					</div>
 				</div>
@@ -89,7 +132,7 @@ body {
 			$('body').bootstrapMaterialDesign();
 		});
 	</script>
-	
+
 	<jsp:include page="footer.jsp" />
 </body>
 
