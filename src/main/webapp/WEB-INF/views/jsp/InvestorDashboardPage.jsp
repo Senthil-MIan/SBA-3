@@ -78,10 +78,7 @@ body {
 										Recently Viewed Companies </b></li>
 							</a>												
 							
-							<br>
-							<li><a href="TrendingChart.jsp"> <b> Trending Chart
-								</b></li>
-							</a>
+							
 							<br>
 							
 							<li><a
@@ -89,10 +86,7 @@ body {
 									<b> Search Company </b></li>
 							</a>
 					
-							<br>
-							<li><a href="Choosecompanies.jsp"> <b> Choose
-										companies and compare their current share value </b></li>
-							</a>
+							
 							
 							<br>
 							<li><a

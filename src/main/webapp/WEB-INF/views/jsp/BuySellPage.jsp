@@ -21,9 +21,8 @@
 		<nav >			
 			<div><a href="${pageContext.request.contextPath}/user/home" id="primaryNavigators">Home</a>
 			<div><a  href="${pageContext.request.contextPath}/logout" id="primaryNavigators">Logout</a></div>
-			
 		</nav>
-		</div>
+	</div>
 		<h4 id="errors" class="search">${message}</h4><br>
 		<div class="search">
 			<div id="mainForm">

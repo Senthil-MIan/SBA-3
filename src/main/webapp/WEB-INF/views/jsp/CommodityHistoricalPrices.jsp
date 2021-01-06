@@ -14,7 +14,7 @@
 	  border: 1px solid black;
 	  border-collapse: collapse;
 	  margin-left: 10px;
-	  height: 50px;
+	  height: 50px;z
 	}
 	thead {
 	  background: DodgerBlue;

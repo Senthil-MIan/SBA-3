@@ -16,16 +16,15 @@ import javax.validation.Valid;
 import com.wf.training.pms.dto.CompanyHistoricalDataOutputDto;
 import com.wf.training.pms.dto.LoginDto;
 import com.wf.training.pms.dto.MoneyInputDto;
-import com.wf.training.pms.dto.SearchCommodityDto;
+
 import com.wf.training.pms.dto.HomePageOutputDto;
 import com.wf.training.pms.dto.WalletDto;
 import com.wf.training.pms.dto.AddWalletMoneyDto;
-import com.wf.training.pms.dto.CommodityDto;
-import com.wf.training.pms.dto.CommodityPriceDto;
+
 import com.wf.training.pms.dto.CompanyDto;
 import com.wf.training.pms.dto.SearchCompanyDto;
 import com.wf.training.pms.dto.ShareCountInputDto;
-import com.wf.training.pms.service.CommodityService;
+
 import com.wf.training.pms.service.CompanyHistoricalDataService;
 import com.wf.training.pms.service.CompanyService;
 import com.wf.training.pms.service.InvestorService;
@@ -44,8 +43,7 @@ public class InvestorContoller {
 	@Autowired
 	private InvestorService investorService;
 
-	@Autowired
-	private CommodityService commodityService;
+	
 
 	@Autowired
 	private CompanyHistoricalDataService historicalService;
@@ -66,11 +64,7 @@ public class InvestorContoller {
 		return "CompanySearch";
 	}
 	
-	@RequestMapping("/searchCommodity")
-	public String commodity(@ModelAttribute("commodity") SearchCommodityDto commodity) {
-		return "invSearchCommodity";
-	}
-
+		
 
 	@RequestMapping("/historicalPrices/{companyCode}")
 	public String companyHistoricalPrice(@PathVariable("companyCode") Long companyCode, Model model) {
@@ -94,19 +88,7 @@ public class InvestorContoller {
 		return "CompanyPage";
 	}
 
-	@RequestMapping("/commodity")
-	public String searchCommodityName(@Valid @ModelAttribute("commodityName") SearchCommodityDto searchCommodityDto,
-			BindingResult result, Model model) {
-
-		if (result.hasErrors()) {
-			return "invSearchCommodity";
-		}
-
-		CommodityDto commodityDto = this.commodityService.fetchSingleCommodityByName(searchCommodityDto);
-
-		model.addAttribute("commodityDto", commodityDto);
-		return "invCommodityPage";
-	}
+	
 
 	@RequestMapping("/company/{companyTitle}")
 	public String searchCompanyByName(@PathVariable("companyTitle") String companyTitle, Model model,
@@ -119,12 +101,19 @@ public class InvestorContoller {
 		return "CompanyPage";
 	}
 
+	
 	@RequestMapping()
 	public String defaultResponse() {
 
 		return "redirect:/user/home";
 	}
 	
+	/**
+	 * currentPortfolio method is used to display the portfolio values
+	 * @param investorLoginDto
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value= {"/currentPortfolio"})
 	public String currentPortfolio(@SessionAttribute("Investor") LoginDto investorLoginDto, Model model) {
 		
@@ -135,10 +124,6 @@ public class InvestorContoller {
 		return "CurrentPortfolio";
 	}
 
-//	@RequestMapping("/profile-entry")
-//	public String profileEntry(Model model) {
-//		return "employee-profile-entry";
-//	}
 
 	@RequestMapping("/wallet")
 	public String wallet() {
@@ -162,17 +147,7 @@ public class InvestorContoller {
 		moneyInputDto.setAmount(Long.valueOf(0));
 		return "DepositMoney";
 	}
-//	@RequestMapping("/AddMoney")
-//	public String AddMoney(@SessionAttribute("Investor") LoginDto investorLoginDto,@Valid @ModelAttribute("addWalletMoney") AddWalletMoneyDto addWalletMoneyDto,BindingResult result,Model model) {
-//		if (result.hasErrors()) {
-//			return "DepositMoney";
-//		}	
-//		String message = this.investorService.addMoneyToWallet(investorLoginDto.getLoginKey(), moneyInputDto.getAmount());
-//		model.addAttribute("balance",currentBalance);
-//		model.addAttribute("Message","Amount Added Successfully");
-//		return "DepositMoney";
-//	}
-//	
+
 	@RequestMapping("/AddMoney")
 	public String walletAddMoney(@Valid @ModelAttribute("moneyInputDto") MoneyInputDto moneyInputDto,BindingResult result, Model model,
 			@SessionAttribute("Investor") LoginDto investorLoginDto) {
@@ -211,7 +186,7 @@ public class InvestorContoller {
 		return "WithdrawMoney";
 	}
 	
-	//****************************Buy Page*****************************************************
+	
 	@RequestMapping("/buyCompany/{stockName}")
 	public String returnBuyPage(@PathVariable("stockName") String companyName, Model model,
 			@ModelAttribute("shareCount") ShareCountInputDto shareCount) {

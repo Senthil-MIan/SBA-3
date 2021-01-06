@@ -100,7 +100,8 @@ public class HomeController {
 			model.addAttribute("Investor", investorLoginDto);
 			model.addAttribute("homePageOutputDto", homePageOutputDto);
 			model.addAttribute("balance",this.investorService.getWalletBalance(investorLoginDto));
-			return "InvestorDashboardPage";
+//			return "InvestorDashboardPage";
+			return "redirect:user/home";
 		} else {
 			model.addAttribute("Message", "Invalid Credentials");
 			return "LoginPage";
